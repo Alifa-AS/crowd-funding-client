@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import image from '../../assets/user.png'
 
 const Navbar = () => {
+    
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+
+    const handleToggle = (e) =>{
+        if(e.target.checked){
+            setTheme("dark");
+        }
+        else{
+            setTheme("light")
+        }
+    }
+
+    useEffect(()=>{
+        localStorage.setItem("theme", theme)
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme)
+    } ,[theme])
 
     const links = 
     <>
@@ -45,7 +62,9 @@ const Navbar = () => {
                 <div className="navbar-end">
                 <label className="swap swap-rotate">
                     {/* this hidden checkbox controls the state */}
-                    <input type="checkbox" />
+                    <input type="checkbox" 
+                    onClick={handleToggle} 
+                    checked={theme === "light" ? false : true} />
 
                     {/* sun icon */}
                     <svg
