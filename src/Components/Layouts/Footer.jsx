@@ -16,11 +16,12 @@ const Footer = () => {
     <a className="link link-hover">Advertisement</a>
   </nav>
   <ul>
-    <h6 className="footer-title">Company</h6>
-    <li><NavLink to='/' className={({isActive}) => isActive ? 'text-purple-700 font-bold underline' : ''}>Home</NavLink></li>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
+    <h6 className="footer-title">Pages</h6>
+    <li><NavLink to='/' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>Home</NavLink></li>
+    <li><NavLink to='/allCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AllCampaign</NavLink></li>
+    <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AddCampaign</NavLink></li>
+    <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyCampaign</NavLink></li>
+    <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyDonations</NavLink></li>
   </ul>
   <nav>
     <h6 className="footer-title">Legal</h6>

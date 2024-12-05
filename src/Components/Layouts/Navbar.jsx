@@ -24,6 +24,10 @@ const Navbar = () => {
     const links = 
     <>
     <li><NavLink to='/' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>Home</NavLink></li>
+    <li><NavLink to='/allCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>AllCampaign</NavLink></li>
+    <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>AddCampaign</NavLink></li>
+    <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyCampaign</NavLink></li>
+    <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyDonations</NavLink></li>
     </>
 
     return (
