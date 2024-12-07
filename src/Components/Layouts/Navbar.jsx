@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import userIcon from '../../assets/user.png'
+import userIcon from '../../assets/user.png';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
@@ -58,7 +58,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                     </div>
-                    <a className="text-xl font-bold">Crowd Cube</a>
+                    <a className="text-xl font-bold">C<span className='text-green-600'>row</span>d C<span className='text-green-600'>ub</span>e</a>
                 </div>
                 
                 <div className="navbar-center hidden lg:flex">

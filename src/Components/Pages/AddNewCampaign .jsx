@@ -1,4 +1,6 @@
 import React from 'react';
+import Swal from 'sweetalert2'
+
 
 const AddNewCampaign  = () => {
 
@@ -14,15 +16,39 @@ const AddNewCampaign  = () => {
         const amount = form.amount.value;
         const deadline = form.deadline.value;
         const image = form.image.value;
+        const description = form.description.value;
 
-        const newCampaign = {name, email, title, type, amount, deadline, image}
+        const newCampaign = {name, email, title, type, amount, deadline, image, description}
         console.log(newCampaign);
+
+
+        // send data to the server
+        fetch('http://localhost:5000/campaign',{
+           
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newCampaign)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Campaign added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                  })
+            }
+        })
     }
 
 
     return (
         <div className='my-20'>
-           <div className='bg-[#F4F3F0] p-24'>
+           <div className='bg-base-200 p-24'>
             <h2 className='text-3xl font-extrabold'>Add Campaign</h2>
             <form onSubmit={handleAddCampaign}>
                 {/* form row 1*/}
@@ -51,18 +77,18 @@ const AddNewCampaign  = () => {
                <div className='md:w-1/2 ml-4'>
                    <label className="form-control w-full">
                     <div className="label">
-                        <span className="label-text">Title</span>
+                        <span className="label-text">Campaign Title</span>
                     </div>
-                    <input type="text" name="title" placeholder="title" 
+                    <input type="text" name="title" placeholder="Campaign title" 
                     className="input input-bordered w-full" />
                     </label>
                </div>
                <div className='md:w-1/2 ml-4'>
                    <label className="form-control w-full">
                     <div className="label">
-                        <span className="label-text">Type</span>
+                        <span className="label-text">Campaign Type</span>
                     </div>
-                    <input type="text" name="type" placeholder="type" 
+                    <input type="text" name="type" placeholder="Campaign type" 
                     className="input input-bordered w-full" />
                     </label>
                </div>
@@ -72,7 +98,7 @@ const AddNewCampaign  = () => {
                <div className='md:w-1/2 ml-4'>
                    <label className="form-control w-full">
                     <div className="label">
-                        <span className="label-text">Donation Amount</span>
+                        <span className="label-text">Minimum Donation Amount</span>
                     </div>
                     <input type="text" name="amount" placeholder="Donation Amount" 
                     className="input input-bordered w-full" />
@@ -96,6 +122,18 @@ const AddNewCampaign  = () => {
                         <span className="label-text">Image URL</span>
                     </div>
                     <input type="text" name="image" placeholder="Image URL" 
+                    className="input input-bordered w-full" />
+                    </label>
+               </div>
+               </div>
+               {/* description */}
+               <div className='ml-4 mb-8'>
+               <div className='w-full'>
+                   <label className="form-control w-full">
+                    <div className="label">
+                        <span className="label-text">Description</span>
+                    </div>
+                    <input type="text" name="description" placeholder="Description" 
                     className="input input-bordered w-full" />
                     </label>
                </div>
