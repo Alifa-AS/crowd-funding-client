@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
     
-    const { user, logOut }=useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
@@ -31,6 +31,7 @@ const Navbar = () => {
     <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>AddCampaign</NavLink></li>
     <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyCampaign</NavLink></li>
     <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyDonations</NavLink></li>
+    <li><NavLink to='/howTo' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>How Help</NavLink></li>
     </>
 
     return (
@@ -58,7 +59,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                     </div>
-                    <a className="text-xl font-bold">C<span className='text-green-600'>row</span>d C<span className='text-green-600'>ub</span>e</a>
+                    <a className="text-xl font-bold">C<span className='text-[#5b71ff]'>row</span>d C<span className='text-[#5b71ff]'>ub</span>e</a>
                 </div>
                 
                 <div className="navbar-center hidden lg:flex">
@@ -91,37 +92,35 @@ const Navbar = () => {
                         d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                     </svg>
                     </label>
-
-                    {/* <div>
-                    <button className="btn btn-ghost btn-circle">
-                    <img src={userIcon} className='w-8' alt="user" />
-                    </button>
-                    </div> */}
                      
-                     <div className='pl-2'>
+                     {/* user profile */}
+                     <div className='relative group z-50'>
                        {user && user?.email ? (
                         <div>
-                        <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
-                        <p>{user.displayName}</p>
-                        </div>
-                        ) : (
-                            <img src={userIcon} className='w-8' alt="" />
-                        )}
-                       </div>
+                        <img className="w-10 h-10 rounded-full cursor-pointer" 
+                        src={user?.photoURL} 
+                        alt={user?.displayName} />
 
-                    {
-                        user && user?.email ? (
-                        <button onClick={logOut} className="btn">LogOut</button>
+                       {/* hover */}
+                    <div className='absolute flex flex-col items-center right-0 top-12 gap-2 opacity-0 group-hover:opacity-100 z-50'>
+                        <button className='bg-blue-500 text-white px-2 py-1 rounded'>
+                            {user.displayName}
+                        </button>
+                        <button onClick={logOut} 
+                        className="bg-red-500 text-white px-2 py-1 rounded">
+                            LogOut</button>
+                        </div>
+                    </div>
                           ) : (
                             <Link to='/login'>
-                            <button className='btn'>Login</button>
+                            <button className='btn bg-[#596def] text-white'>Login</button>
+                            <Link to='/register'><button className='btn bg-[#596def] text-white'>Register</button></Link>
                             </Link>
-                        )
-                        
-                    }
+                        )}
                 </div>
             </div>
-        </div>
+        </div> 
+    </div>
     );
 };
 

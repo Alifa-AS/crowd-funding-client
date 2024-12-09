@@ -8,6 +8,9 @@ import AllCampaign from "../Components/Pages/AllCampaign";
 import AddNewCampaign from "../Components/Pages/AddNewCampaign ";
 import MyCampaign from "../Components/Pages/MyCampaign";
 import MyDonations from "../Components/Pages/MyDonations ";
+import Details from "../Components/Pages/Details/Details";
+import HowTo from "../Components/Pages/HowTo";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const router  = createBrowserRouter([
@@ -33,18 +36,44 @@ const router  = createBrowserRouter([
             {
                 path: '/allCampaign',
                 element: <AllCampaign />,
+                loader: () => fetch('http://localhost:5000/campaign')
             },
             {
                 path: '/addNewCampaign',     
-                element: <AddNewCampaign />,     //private
+                element: (
+                    <PrivateRoutes>
+                           <AddNewCampaign />
+                         </PrivateRoutes>
+                       ),    
             },
             {
                 path: '/myCampaign',       
-                element: <MyCampaign />,      //private
+                element: (
+                    <PrivateRoutes>
+                            <MyCampaign />
+                         </PrivateRoutes>
+                         ),     
             },
             {
-                path: '/MyDonations',
-                element: <MyDonations />,       //private
+                path: '/myDonations',
+                element: (
+                    <PrivateRoutes>
+                            <MyDonations />
+                        </PrivateRoutes> 
+                        ),      
+            },
+            {
+                path: '/howTo',
+                element: <HowTo />,
+            },
+            {
+                path: '/details/:id',
+                element: (
+                        <PrivateRoutes>
+                            <Details />
+                        </PrivateRoutes>
+                ),
+                loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
             },
         ]
     },

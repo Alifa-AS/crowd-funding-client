@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import AllCards from './AllCards';
 
-const AllCampaign = () => {
+ const AllCampaign = () => {
+ const loadedCampaigns = useLoaderData();
+ const[campaigns, setCampaigns] = useState(loadedCampaigns);
+ 
+ const handleSort = () =>{
+  const sortedCampaigns = [...campaigns].sort((a,b)=> a.amount - b.amount);
+  setCampaigns(sortedCampaigns);
+ }
+
+  
     return (
-        <div>
-           <div className='flex justify-center p-4'>
-            <div className="card card-compact bg-base-100 w-full max-w-sm md:max-w-md lg:max-w-lg shadow-xl">
-            <figure  className="px-4 pt-4 md:px-6 md:pt-8">
-                <img
-                className='w-full h-auto object-cover rounded-xl'
-                src=""
-                alt="img" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title text-lg md:text-lg lg:text-xl font-bold"></h2>
-                <p className='text-sm md:text-base'></p>
-                <div className="card-actions">
-                <button className="btn btn-primary w-full md:w-auto">
-                    Donate Now</button>
-                </div>
+        <div className='py-20'>
+           <div className='flex justify-between p-6'>
+           <h1 className='font-bold text-xl'>All Campaigns : {campaigns.length}</h1>
+            <button onClick={handleSort}
+            className='btn text-[#4157eb] border-blue-500'>
+              Sort
+            </button>
+           </div>
+           <div className="overflow-x-auto">
+                <table className="table w-full border">
+                    {/* Table Header */}
+                    <thead className="bg-[#4157eb] text-white">
+                        <tr>
+                            <th>Serial</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Title</th>
+                            <th>Deadline</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    {/* Table Body */}
+                    <tbody>
+                    {
+                        campaigns.map((campaign ,idx)=> <AllCards 
+                        key={campaign._id}
+                        campaign={campaign}
+                        index={idx}
+                        ></AllCards>)
+                        }           
+                    </tbody>
+                </table>
             </div>
-            </div>
-        </div>
         </div>
     );
 };

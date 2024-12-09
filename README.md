@@ -1,10 +1,13 @@
-# **Crowdcube: A Crowd Funding Application**
+# **Crowd cube: A Crowd Funding Application**
+# **Assignment Category -TULIP**
 
 Welcome to **Crowdcube**, a dynamic crowdfunding platform designed to help individuals and businesses raise money for their projects, ideas, and causes. Explore campaigns, contribute to meaningful initiatives, or start your own campaign seamlessly!
 
 ## **Live Site URL**
 [Visit Crowdcube Live]
----
+--- Firebase  live client side -  https://crowd-funding-1a5b4.web.app
+
+--- vercel live server side - crowd-funding-server-dusky.vercel.app
 
 ## **Key Features**
 

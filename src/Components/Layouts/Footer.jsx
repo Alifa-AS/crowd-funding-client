@@ -8,20 +8,17 @@ const Footer = () => {
     return (
         <>
         <footer className="footer bg-base-200 text-base-content p-7">
-  <nav>
+  <ul>
     <h6 className="footer-title">Services</h6>
-    <a className="link link-hover">Branding</a>
-    <a className="link link-hover">Design</a>
-    <a className="link link-hover">Marketing</a>
-    <a className="link link-hover">Advertisement</a>
-  </nav>
+    <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AddCampaign</NavLink></li>
+    <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyCampaign</NavLink></li>
+    <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyDonations</NavLink></li>
+  </ul>
   <ul>
     <h6 className="footer-title">Pages</h6>
     <li><NavLink to='/' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>Home</NavLink></li>
     <li><NavLink to='/allCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AllCampaign</NavLink></li>
-    <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AddCampaign</NavLink></li>
-    <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyCampaign</NavLink></li>
-    <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>MyDonations</NavLink></li>
+    <li><NavLink to='/howTo' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>How Works</NavLink></li>
   </ul>
   <nav>
     <h6 className="footer-title">Legal</h6>

@@ -88,8 +88,13 @@ const AddNewCampaign  = () => {
                     <div className="label">
                         <span className="label-text">Campaign Type</span>
                     </div>
-                    <input type="text" name="type" placeholder="Campaign type" 
-                    className="input input-bordered w-full" />
+                        <select className="select select-bordered w-full" 
+                           name="type" >
+                            <option disabled selected>Campaign Type</option>
+                            <option>Start Up</option>
+                            <option>Creative Ideas</option>
+                            <option> personal needs</option>
+                        </select>
                     </label>
                </div>
                </div>
@@ -114,6 +119,19 @@ const AddNewCampaign  = () => {
                     </label>
                </div>
                </div>
+                {/* description */}
+                <div className='ml-4 mb-8'>
+               <div className='w-full'>
+                   <label className="form-control w-full">
+                    <div className="label">
+                        <span className="label-text">Description</span>
+                    </div>
+                    <textarea
+                    placeholder="description"
+                    className="textarea textarea-bordered textarea-sm w-full"></textarea>
+                    </label>
+               </div>
+               </div>         
                 {/* image row 3*/}
                <div className='ml-4 mb-8'>
                <div className='w-full'>
@@ -125,20 +143,8 @@ const AddNewCampaign  = () => {
                     className="input input-bordered w-full" />
                     </label>
                </div>
-               </div>
-               {/* description */}
-               <div className='ml-4 mb-8'>
-               <div className='w-full'>
-                   <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">Description</span>
-                    </div>
-                    <input type="text" name="description" placeholder="Description" 
-                    className="input input-bordered w-full" />
-                    </label>
-               </div>
-               </div>
-               <input type="submit" value="Add Campaign" className='btn btn-block bg-[#4157eb] text-white font-bold' />
+               </div> 
+               <input type="submit" value="Add Campaign" className='btn btn-block bg-[#5b71ff] text-white font-bold' />
             </form>
         </div>
         </div>
