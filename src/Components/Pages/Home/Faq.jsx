@@ -6,7 +6,7 @@ const Faq = () => {
         <section className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold text-center py-10'>Frequently Asked</h1>
           </section>
-        <div className='mb-20'>
+        <div className='mb-20' data-aos="fade-up"data-aos-duration="2000">
 
             <div className="collapse collapse-plus bg-base-200 my-5">
             <input type="radio" name="my-accordion-3" defaultChecked />

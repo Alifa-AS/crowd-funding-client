@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../provider/AuthProvider';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 
 
 const AddNewCampaign  = () => {
+    const { user } = useContext(AuthContext)
+    const[startDate, setStartDate] = useState(new Date());
+    
 
     const handleAddCampaign = (e) => {
         e.preventDefault();
 
         const form = e.target;
-        
-        const name = form.name.value;
-        const email = form.email.value;
+        const formattedDate = startDate.toLocaleDateString("en-CA");
+        const name = user.displayName;
+        const email = user.email;
         const title = form.title.value;
         const type  = form.type.value;
         const amount = form.amount.value;
-        const deadline = form.deadline.value;
+        const description = form.description;
         const image = form.image.value;
-        const description = form.description.value;
 
-        const newCampaign = {name, email, title, type, amount, deadline, image, description}
+        const newCampaign = {name, email, title, type, amount, deadline:formattedDate, image, description}
         console.log(newCampaign);
 
 
@@ -47,7 +53,9 @@ const AddNewCampaign  = () => {
 
 
     return (
-        <div className='my-20'>
+        <div className='my-20' data-aos="fade-up"
+                    data-aos-easing="linear"
+                    data-aos-duration="1000">
            <div className='bg-base-200 p-24'>
             <h2 className='text-3xl font-extrabold'>Add Campaign</h2>
             <form onSubmit={handleAddCampaign}>
@@ -59,7 +67,9 @@ const AddNewCampaign  = () => {
                         <span className="label-text">Name</span>
                     </div>
                     <input type="text" name="name" placeholder="name" 
-                    className="input input-bordered w-full" />
+                    defaultValue={user.displayName}
+                    className="input input-bordered w-full" 
+                    readOnly />
                     </label>
                </div>
                <div className='md:w-1/2 ml-4'>
@@ -67,8 +77,12 @@ const AddNewCampaign  = () => {
                     <div className="label">
                         <span className="label-text">Email</span>
                     </div>
-                    <input type="email" name="email" placeholder="Email" 
-                    className="input input-bordered w-full" />
+                    <input type="email" 
+                    name="email" 
+                    defaultValue={user.email} 
+                    placeholder="Email" 
+                    className="input input-bordered w-full"
+                    readOnly />
                     </label>
                </div>
                </div>
@@ -93,7 +107,8 @@ const AddNewCampaign  = () => {
                             <option disabled selected>Campaign Type</option>
                             <option>Start Up</option>
                             <option>Creative Ideas</option>
-                            <option> personal needs</option>
+                            <option>personal needs</option>
+                            <option>Medical</option>
                         </select>
                     </label>
                </div>
@@ -109,16 +124,23 @@ const AddNewCampaign  = () => {
                     className="input input-bordered w-full" />
                     </label>
                </div>
-               <div className='md:w-1/2 ml-4'>
-                   <label className="form-control w-full">
+
+               {/* date and time */}
+               <div className="md:w-1/2 ml-4">
+                <label className="form-control w-full">
                     <div className="label">
-                        <span className="label-text">Deadline</span>
+                    <span className="label-text">DeadeLine</span><FaCalendarAlt />
                     </div>
-                    <input type="text" name="deadline" placeholder="deadline" 
-                    className="input input-bordered w-full" />
-                    </label>
+                    <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    className="input input-bordered w-full"
+                    />
+                </label>
+                </div>
                </div>
-               </div>
+
                 {/* description */}
                 <div className='ml-4 mb-8'>
                <div className='w-full'>

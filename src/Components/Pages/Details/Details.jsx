@@ -17,7 +17,9 @@ const Details = () => {
     }
     
     return (
-        <div className="py-20">
+        <div className="py-20" data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1000">
              <div className="py-10 px-4 lg:px-20">
             <h1 className="font-bold text-3xl text-center mb-10">Campaign Details</h1>
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -36,7 +38,7 @@ const Details = () => {
                     <p className="text-gray-600 mb-4">{description}</p>
                     <button
                         onClick={handleDonate}
-                        className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                        className="px-6 py-2 bg-[#] text-white rounded-lg bg-[#5b71ff] hover:bg-indigo-700">
                         Donate
                     </button>
                 </div>

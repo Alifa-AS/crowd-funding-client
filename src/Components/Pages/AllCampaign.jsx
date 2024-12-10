@@ -21,7 +21,9 @@ import AllCards from './AllCards';
               Sort
             </button>
            </div>
-           <div className="overflow-x-auto">
+           <div className="overflow-x-auto" data-aos="fade-up"
+                            data-aos-easing="linear"
+                            data-aos-duration="1000">
                 <table className="table w-full border">
                     {/* Table Header */}
                     <thead className="bg-[#4157eb] text-white">

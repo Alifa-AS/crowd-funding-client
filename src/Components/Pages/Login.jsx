@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../provider/AuthProvider';
+import { auth, AuthContext } from '../../provider/AuthProvider';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import Swal from 'sweetalert2';
+
 
 
 const Login = () => {
@@ -18,12 +21,49 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             setUser(user);
+            Swal.fire({
+                icon: "success",
+                title: "Login Successful",
+                text: `Welcome back, ${user.displayName || "User"}!`,
+            })
+            .then(() => {
+                navigate('/home');
+            });
+
+            //update last login time 
+            const lastLoginTime = result?.user?.metadata?.lastLoginTime;
+            // const loginInfo = { email,lastLoginTime };
+
         })
         .catch(error =>{
-            alert(error.code)
+            Swal.fire({
+                icon: "error",
+                title: "Login Failed",
+                text: "Email or Password is incorrect. Please try again.",
+            });
         })
     }
-  
+    const provider = new GoogleAuthProvider()
+
+    const handleGoogleLogin = () =>{
+        signInWithPopup(auth, provider)
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+            Swal.fire({
+                icon: "success",
+                title: "Login Successful",
+                text: `Welcome back, ${user.displayName || "User"}!`,
+            });
+        })
+        .catch(error=>{
+            Swal.fire({
+                icon: "error",
+                title: "Login Failed",
+                text: "Email or Password is incorrect. Please try again.",
+            });
+        })
+    }
 
     return (
         <div className='my-12'>
@@ -59,6 +99,11 @@ const Login = () => {
                         <p>Don't Have any account? <span 
                         className='text-red-600 font-bold underline'> 
                         <Link to="/register">Register</Link></span> Now</p>
+                       </div>
+                       <div>
+                       <button 
+                       onClick={handleGoogleLogin}
+                       className='btn'>Google Login</button>
                        </div>
                 </form>
                 </div>

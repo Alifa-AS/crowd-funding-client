@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-
     const {createNewUser, setUser, updateUserProfile} = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate();
+
     const handleRegister = (e) => {
         e.preventDefault();
 
@@ -16,21 +19,79 @@ const Register = () => {
         const password = form.password.value;
         console.log('form register', name, photo, email, password);
 
+        if(password.length < 6){
+            toast.error('Password should at least 6 characters')
+            return;
+           }
+        
+        // const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+        // if (!passwordRegex.test(password)) {
+        //     toast.error('Password must include an uppercase letter, a lowercase letter, a number, and a special character');
+        //     return;
+        // }
+        if (!/[A-Z]/.test(password)) {
+            toast.error('Password must include at least one uppercase letter');
+            return;
+        }
+    
+        // Check for at least one lowercase letter
+        if (!/[a-z]/.test(password)) {
+            toast.error('Password must include at least one lowercase letter');
+            return;
+        }
+    
+        // Check for at least one digit
+        if (!/[0-9]/.test(password)) {
+            toast.error('Password must include at least one number');
+            return;
+        }
+    
+        // Check for at least one special character
+        if (!/[!@#$%^&*]/.test(password)) {
+            toast.error('Password must include at least one special character (!@#$%^&*)');
+            return;
+        }
+
         createNewUser(email, password)
         .then((result) => {
            const user = result.user;
-           setUser(user)
+           setUser(user);
+
+           
+        //    const createdAt = result?.user?.metadata?.creationTime;
+        //    const newUser = {name, email,createdAt}
+        //    //save new user info 
+        //    fetch('http://localhost:5000/users',{
+        //     method: 'POST',
+        //     headers:{
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newUser)
+        // })
+        // .then(res => res.json())
+        // .then(data =>{
+        //     console.log('user created to db',data)
+        // })
+
            updateUserProfile({displayName:name, photoURL:photo})
            .then(()=>{
-            navigate("/")
+            Swal.fire({
+                title: 'Registration Successful!',
+                text: 'Welcome to the platform!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+            })
+            .then(()=> navigate("/"))
            })
            .catch((error) =>{
-            console.log(error)
+            console.log(error);
+            toast.error('Failed to update profile. Try again.');
            })
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            toast.error(`Error: ${errorMessage}`)
             console.log(errorCode, errorMessage)
           });
     }
@@ -80,7 +141,7 @@ const Register = () => {
                 <div>
                     <p>Already Have an account? <span 
                     className='text-green-500 font-bold underline'>
-                    <Link to="/login">Login</Link></span> Now</p>
+                    <Link to="/login">Login</Link></span>{' '} Now</p>
                 </div>
             </form>
             </div>

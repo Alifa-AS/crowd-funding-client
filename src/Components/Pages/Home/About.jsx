@@ -6,7 +6,8 @@ const About = () => {
         <div>
              <div className='my-20'>
             <div className="hero bg-base-200 p-8 lg:p-20">
-            <div className="hero-content flex-col lg:flex-row lg:gap-10" data-aos="flip-left">
+            <div className="hero-content flex-col lg:flex-row lg:gap-10" 
+                 data-aos="fade-up"data-aos-duration="2000">
                 <img
                 src={img}
                 className="w-full rounded-lg shadow-2xl max-w-[250px] sm:max-w-[250px] md:max-w-sm lg:max-w-md" />

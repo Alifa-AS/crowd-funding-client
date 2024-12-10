@@ -6,7 +6,7 @@ import img3 from '../../assets/c3.jpg'
 
 const HowTo = () => {
     return (
-        <div className="my-20">
+        <div className="my-20" data-aos="fade-up"data-aos-duration="2000">
         <h1 className='font-bold text-3xl text-center py-2'>How To Help</h1>
         <div className="hero bg-base-200 lg:py-10">
         <div className="hero-content text-center">

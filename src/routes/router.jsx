@@ -23,7 +23,7 @@ const router  = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/campaign')
+                loader: () => fetch('http://localhost:5000/activeCampaigns')
             },
             {
                 path: '/register',

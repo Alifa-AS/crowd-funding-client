@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
 import ActiveCards from './ActiveCards';
 
-const Active = () => {
-    const campaigns = useLoaderData();
+const Active = ({campaigns}) => {
+    
 
     return (
         <div className='my-20 p-4'>
