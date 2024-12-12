@@ -12,7 +12,7 @@ import AllCards from './AllCards';
  }
 
   
-    return (
+    return ( 
         <div className='py-20'>
            <div className='flex justify-between p-6'>
            <h1 className='font-bold text-xl'>All Campaigns : {campaigns.length}</h1>

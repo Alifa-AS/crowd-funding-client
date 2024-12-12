@@ -18,7 +18,7 @@ const Footer = () => {
     <h6 className="footer-title">Pages</h6>
     <li><NavLink to='/' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>Home</NavLink></li>
     <li><NavLink to='/allCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>AllCampaign</NavLink></li>
-    <li><NavLink to='/howTo' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>How Works</NavLink></li>
+    <li><NavLink to='/users' className={({isActive}) => isActive ? 'text-blue-500 font-bold underline' : ''}>All Users</NavLink></li>
   </ul>
   <nav>
     <h6 className="footer-title">Legal</h6>

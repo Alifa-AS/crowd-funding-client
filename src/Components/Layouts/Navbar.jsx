@@ -31,7 +31,7 @@ const Navbar = () => {
     <li><NavLink to='/addNewCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>AddCampaign</NavLink></li>
     <li><NavLink to='/myCampaign' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyCampaign</NavLink></li>
     <li><NavLink to='/myDonations' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>MyDonations</NavLink></li>
-    <li><NavLink to='/howTo' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>How Help</NavLink></li>
+    <li><NavLink to='/users' className={({isActive}) => isActive ? 'text-blue-500 font-bold' : 'font-semibold'}>All Users</NavLink></li>
     </>
 
     return (

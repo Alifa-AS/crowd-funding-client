@@ -105,10 +105,10 @@ const AddNewCampaign  = () => {
                         <select className="select select-bordered w-full" 
                            name="type" >
                             <option disabled selected>Campaign Type</option>
-                            <option>Start Up</option>
+                            <option>StartUp</option>
                             <option>Creative Ideas</option>
-                            <option>personal needs</option>
-                            <option>Medical</option>
+                            <option>personal Issue</option>
+                            <option>business</option>
                         </select>
                     </label>
                </div>

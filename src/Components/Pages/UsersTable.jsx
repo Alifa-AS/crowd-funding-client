@@ -1,16 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const AllCards = ({ campaign, index }) => {
-  const { _id, name, email, title, type, amount, deadline, image } = campaign;
+const UsersTable = ({ user, index }) => {
+  const { _id, image, name, email } = user;
 
   return (
     <tr className="hover:bg-gray-100">
-      {/* Serial */}
-      <th>{index + 1}</th>
+      {/* Serial Number */}
+      <td className="border px-4 py-2 text-center">{index + 1}</td>
 
-      {/* Image */}
-      <td>
+      {/* User Image */}
+      <td className="border px-4 py-2 text-center">
         <div className="avatar">
           <div className="mask mask-squircle h-12 w-12">
             <img src={image} alt={name} />
@@ -18,17 +18,16 @@ const AllCards = ({ campaign, index }) => {
         </div>
       </td>
 
-      {/* Name */}
-      <td>
+      {/* User Name */}
+      <td className="border px-4 py-2 text-left">
         <div className="font-bold">{name}</div>
-        <div>{email}</div>
       </td>
-      <td>${amount}</td>
-      <td>{type}</td>
-      <td>{deadline}</td>
+
+      {/* User Email */}
+      <td className="border px-4 py-2 text-left">{email}</td>
 
       {/* Actions */}
-      <td>
+      <td className="border px-4 py-2 text-center">
         <NavLink to={`/details/${_id}`}>
           <button className="btn bg-[#4157eb] text-white">See More</button>
         </NavLink>
@@ -37,4 +36,4 @@ const AllCards = ({ campaign, index }) => {
   );
 };
 
-export default AllCards;
+export default UsersTable;

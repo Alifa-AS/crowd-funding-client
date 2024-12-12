@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
 const Register = () => {
@@ -56,22 +56,24 @@ const Register = () => {
         .then((result) => {
            const user = result.user;
            setUser(user);
-
            
-        //    const createdAt = result?.user?.metadata?.creationTime;
-        //    const newUser = {name, email,createdAt}
-        //    //save new user info 
-        //    fetch('http://localhost:5000/users',{
-        //     method: 'POST',
-        //     headers:{
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newUser)
-        // })
-        // .then(res => res.json())
-        // .then(data =>{
-        //     console.log('user created to db',data)
-        // })
+           const createdAt = result?.user?.metadata?.creationTime;
+           const newUser = {name, email,createdAt}
+           //save new user info 
+           fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log('user created to db',data);
+            if(data.insertedId){
+                console.log('user Created in db')
+            }
+        })
 
            updateUserProfile({displayName:name, photoURL:photo})
            .then(()=>{
@@ -94,8 +96,7 @@ const Register = () => {
             toast.error(`Error: ${errorMessage}`)
             console.log(errorCode, errorMessage)
           });
-    }
-
+       }
 
     return (
         <div className='my-10'>

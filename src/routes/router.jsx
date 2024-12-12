@@ -9,8 +9,9 @@ import AddNewCampaign from "../Components/Pages/AddNewCampaign ";
 import MyCampaign from "../Components/Pages/MyCampaign";
 import MyDonations from "../Components/Pages/MyDonations ";
 import Details from "../Components/Pages/Details/Details";
-import HowTo from "../Components/Pages/HowTo";
+import Users from "../Components/Pages/Users";
 import PrivateRoutes from "./PrivateRoutes";
+
 
 
 const router  = createBrowserRouter([
@@ -41,30 +42,35 @@ const router  = createBrowserRouter([
             {
                 path: '/addNewCampaign',     
                 element: (
-                    <PrivateRoutes>
+                        <PrivateRoutes>
                            <AddNewCampaign />
-                         </PrivateRoutes>
+                        </PrivateRoutes>
                        ),    
             },
             {
                 path: '/myCampaign',       
                 element: (
-                    <PrivateRoutes>
+                        <PrivateRoutes>
                             <MyCampaign />
-                         </PrivateRoutes>
+                        </PrivateRoutes>
                          ),     
             },
             {
                 path: '/myDonations',
                 element: (
-                    <PrivateRoutes>
+                        <PrivateRoutes>
                             <MyDonations />
                         </PrivateRoutes> 
                         ),      
             },
             {
-                path: '/howTo',
-                element: <HowTo />,
+                path: '/users',
+                element: (
+                        <PrivateRoutes>
+                            <Users />
+                        </PrivateRoutes> 
+                        ),
+                loader: () => fetch('http://localhost:5000/users')
             },
             {
                 path: '/details/:id',
