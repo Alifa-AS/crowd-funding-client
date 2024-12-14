@@ -15,7 +15,7 @@ const AddNewCampaign = () => {
     e.preventDefault();
 
     const form = e.target;
-    const formattedDate = startDate.toLocaleDateString("en-CA");
+    const formattedDate = startDate.toISOString();
     const name = user.displayName;
     const email = user.email;
     const title = form.title.value;
@@ -29,8 +29,8 @@ const AddNewCampaign = () => {
       email,
       title,
       type,
-      amount,
-      deadline: formattedDate,
+      amount: parseInt(amount),
+      deadline: new Date(formattedDate),
       image,
       description,
     };
@@ -117,6 +117,7 @@ const AddNewCampaign = () => {
                   name="title"
                   placeholder="Campaign title"
                   className="input input-bordered w-full"
+                  required
                 />
               </label>
             </div>
@@ -125,7 +126,8 @@ const AddNewCampaign = () => {
                 <div className="label">
                   <span className="label-text">Campaign Type</span>
                 </div>
-                <select className="select select-bordered w-full" name="type">
+                <select className="select select-bordered w-full" 
+                name="type" defaultValue="Creative Ideas">
                   <option disabled selected>
                     Campaign Type
                   </option>

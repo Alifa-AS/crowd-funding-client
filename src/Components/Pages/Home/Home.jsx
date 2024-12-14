@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            <Active campaigns={campaigns} /> //props
+            <Active /> 
             <About />
             <HowToWork />
             <Faq />
