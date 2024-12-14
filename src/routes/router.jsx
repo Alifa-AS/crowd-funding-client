@@ -11,6 +11,7 @@ import MyDonations from "../Components/Pages/MyDonations ";
 import Details from "../Components/Pages/Details/Details";
 import Users from "../Components/Pages/Users";
 import PrivateRoutes from "./PrivateRoutes";
+import UpdateCampaign from "../Components/Pages/UpdateCampaign";
 
 
 
@@ -80,6 +81,15 @@ const router  = createBrowserRouter([
                         </PrivateRoutes>
                 ),
                 loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+            },
+            {
+                path: '/updateCampaign/:id',
+                element: (
+                        <PrivateRoutes>
+                            <UpdateCampaign />
+                        </PrivateRoutes>
+                ),
+                loader:({params})=>fetch(`http://localhost:5000/updateCampaign/${params.id}`)
             },
         ]
     },

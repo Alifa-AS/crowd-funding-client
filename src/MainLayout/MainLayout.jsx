@@ -10,7 +10,7 @@ const MainLayout = () => {
         <div className='container mx-auto'>
              <Toaster position="top-right" reverseOrder={false} />
             <Navbar />
-            <main>
+            <main className='min-h-[calc(100vh-300px)]'>
                 <Outlet></Outlet>
             </main>
             <Footer />

@@ -28,9 +28,7 @@ const UsersTable = ({ user, index }) => {
 
       {/* Actions */}
       <td className="border px-4 py-2 text-center">
-        <NavLink to={`/details/${_id}`}>
-          <button className="btn bg-[#4157eb] text-white">See More</button>
-        </NavLink>
+        
       </td>
     </tr>
   );
