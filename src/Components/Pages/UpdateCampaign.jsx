@@ -13,7 +13,7 @@ const UpdateCampaign = () => {
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
 
-  const handleAddCampaign = (e) => {
+  const handleUpdateCampaign = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -26,7 +26,7 @@ const UpdateCampaign = () => {
     const description = form.description.value;
     const image = form.image.value;
 
-    const newCampaign = {
+    const updatedCampaign = {
       name,
       email,
       title,
@@ -36,32 +36,47 @@ const UpdateCampaign = () => {
       image,
       description,
     };
-    console.log(newCampaign);
+    console.log(updatedCampaign);
 
     // send data to the server
-    fetch("http://localhost:5000/campaign", {
-      method: "POST",
+    fetch(`http://localhost:5000/updateCampaign/${campaign._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCampaign),
+      body: JSON.stringify(updatedCampaign),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Campaign added successfully",
+            text: "Campaign updated successfully",
             icon: "success",
             confirmButtonText: "Done",
           });
+
           navigate("/myCampaign");
+
         } else {
-          console.log("Failed to add");
+          Swal.fire({
+            title: "Error",
+            text: "No changes detected or update failed",
+            icon: "error",
+            confirmButtonText: "Try Again",
+          });
         }
       })
-      .catch((error) => console.error("ERROR adding campaign:", error));
+      .catch((error) => {
+        console.error("ERROR adding campaign:", error);
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      });
   };
 
     return (
@@ -74,7 +89,7 @@ const UpdateCampaign = () => {
               <div className="bg-base-200 p-20">
                 <h2 className="text-3xl font-extrabold text-center py-2">Update Campaign</h2>
                 <p className='text-center py-4 font-semibold'>{campaign.title}</p>
-                <form onSubmit={handleAddCampaign}>
+                <form onSubmit={handleUpdateCampaign}>
                   {/* form row 1*/}
                   <div className="md:flex mb-8">
                     <div className="md:w-1/2 ml-4">
