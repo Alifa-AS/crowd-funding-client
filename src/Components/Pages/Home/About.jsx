@@ -1,7 +1,16 @@
 import React from 'react';
-import img from '../../../assets/c2.jpg'
+import img from '../../../assets/c2.jpg';
+import { useTypewriter } from 'react-simple-typewriter';
 
 const About = () => {
+
+     const [typeEffect] = useTypewriter({
+        words: ['About Us', 'to know more!'],
+        loop:{},
+        typeSpeed: 100,
+        deleteSpeed: 40
+      })
+
     return (
         <div>
              <div className='my-20'>
@@ -12,7 +21,9 @@ const About = () => {
                 src={img}
                 className="w-full rounded-lg shadow-2xl max-w-[250px] sm:max-w-[250px] md:max-w-sm lg:max-w-md" />
                 <div className='text-center lg:text-left'>
-                <h1 className="text-3xl lg:text-4xl font-bold">About Us</h1>
+                <h1 className="text-3xl lg:text-4xl font-bold">
+                <span className="font-bold pl-2 text-indigo-600">{typeEffect}</span>
+                </h1>
                 <p className="py-4 lg:py-6 text-sm sm:text-base">
                 At <span className='font-semibold'>Crowd Cube</span>, we believe in the power of people coming together to make dreams a reality. Our platform connects creators, innovators, and changemakers with supporters who want to bring meaningful projects to life.
 

@@ -28,6 +28,11 @@ const router  = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/activeCampaigns')
             },
             {
+                path: '/home',
+                element: <Home />,
+                loader: () => fetch('http://localhost:5000/activeCampaigns')
+            },
+            {
                 path: '/register',
                 element: <Register />,
             },

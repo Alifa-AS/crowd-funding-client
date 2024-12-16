@@ -1,10 +1,20 @@
 import React from 'react';
+import { useTypewriter } from 'react-simple-typewriter';
 
 const Faq = () => {
+    const [typeEffect] = useTypewriter({
+            words: ['FAQ', 'Frequently Asked', 'Any Question!'],
+            loop:{},
+            typeSpeed: 100,
+            deleteSpeed: 40
+          })
+
     return (
         <>
         <section className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <h1 className='text-3xl font-bold text-center py-10'>Frequently Asked</h1>
+            <h1 className='text-3xl font-bold text-center py-10'>
+            <span className="font-bold pl-2 text-indigo-600">{typeEffect}</span>
+            </h1>
           </section>
         <div className='mb-20' data-aos="fade-up"data-aos-duration="2000">
 

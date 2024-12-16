@@ -77,8 +77,9 @@ const MyCampaign = () => {
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{campaign.title}</h2>
-                  <p>{campaign.amount}</p>
+                  <p className="font-semibold">Amount: {campaign.amount}</p>
                   <p>{campaign.description}</p>
+                  <p className="font-semibold">Deadline: {campaign.deadline}</p>
                   <div className="card-actions justify-end">
                     <div className="join space-x-2">
                       <button className="btn join-item">

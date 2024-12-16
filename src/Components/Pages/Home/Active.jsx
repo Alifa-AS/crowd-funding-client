@@ -37,7 +37,7 @@ const Active = () => {
 
   return (
     <div className="py-20">
-      <h1 className="font-bold text-3xl text-center">Active Campaigns : {activeCampaigns.length}</h1>
+      <h1 className="font-bold text-3xl text-center py-4">Active Campaigns : {activeCampaigns.length}</h1>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
         {
           activeCampaigns.map((campaign) => (
