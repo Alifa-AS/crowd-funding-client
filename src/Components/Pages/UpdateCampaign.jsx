@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
-import { FaCalendarAlt } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 
 const UpdateCampaign = () => {
@@ -17,7 +16,8 @@ const UpdateCampaign = () => {
     e.preventDefault();
 
     const form = e.target;
-    const formattedDate = startDate.toISOString();
+    // const formattedDate = startDate.toISOString();
+    const date = form.date.value;
     const name = user.displayName;
     const email = user.email;
     const title = form.title.value;
@@ -32,7 +32,8 @@ const UpdateCampaign = () => {
       title,
       type,
       amount: parseInt(amount),
-      deadline: new Date(formattedDate),
+      // deadline: new Date(formattedDate),
+      date,
       image,
       description,
     };
@@ -181,16 +182,24 @@ const UpdateCampaign = () => {
                       <label className="form-control w-full">
                         <div className="label">
                           <span className="label-text">DeadLine</span>
-                          <FaCalendarAlt />
+                          
                         </div>
-                        <DatePicker
+                        <div>
+                      <input type="date" name='date' 
+                      className="input input-bordered w-full" />
+                        </div>
+                        {/* <DatePicker
                           selected={startDate}
                           onChange={(date) => setStartDate(date)}
                           dateFormat="dd/MM/yyyy"
                           className="input input-bordered w-full"
-                        />
+                        /> */}
                       </label>
                     </div>
+                    {/* <div>
+                      <input type="date" name='date' />
+                    </div> */}
+                    
                   </div>
         
                   {/* description */}
