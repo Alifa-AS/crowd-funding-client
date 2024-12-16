@@ -33,7 +33,7 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log("form register", name, photo, email, password);
+    // console.log("form register", name, photo, email, password);
 
     if (password.length < 6) {
       toast.error("Password should at least 6 characters");
@@ -78,7 +78,7 @@ const Register = () => {
         const createdAt = result?.user?.metadata?.creationTime;
         const newUser = { name, email, createdAt };
         //save new user info
-        fetch("http://localhost:5000/users", {
+        fetch("https://crowd-funding-server-dusky.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -87,9 +87,9 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("user created to db", data);
+            // console.log("user created to db", data);
             if (data.insertedId) {
-              console.log("user Created in db");
+              // console.log("user Created in db");
             }
           });
 
@@ -103,7 +103,7 @@ const Register = () => {
             }).then(() => navigate("/"));
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
             toast.error("Failed to update profile. Try again.");
           });
       })
@@ -111,7 +111,7 @@ const Register = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         toast.error(`Error: ${errorMessage}`);
-        console.log(errorCode, errorMessage);
+        // console.log(errorCode, errorMessage);
       });
   };
 

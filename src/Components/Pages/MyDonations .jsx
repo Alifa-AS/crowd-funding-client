@@ -10,7 +10,7 @@ const MyDonations = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/donations?email=${user.email}`)
+    fetch(`https://crowd-funding-server-dusky.vercel.app/donations?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setDonations(data); 

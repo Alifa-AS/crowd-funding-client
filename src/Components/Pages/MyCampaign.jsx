@@ -10,7 +10,7 @@ const MyCampaign = () => {
   const { user } = useContext(AuthContext); // Get user info from context
 
   const handleDelete = (_id) => {
-    console.log(_id);
+    // console.log(_id);
 
     Swal.fire({
       title: "Are you sure?",
@@ -23,12 +23,12 @@ const MyCampaign = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/myCampaign/${_id}`, {
+        fetch(`https://crowd-funding-server-dusky.vercel.app/myCampaign/${_id}`, {
           method: 'DELETE'
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -46,7 +46,7 @@ const MyCampaign = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myCampaign?email=${user.email}`)
+      fetch(`https://crowd-funding-server-dusky.vercel.app/myCampaign?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           const userCampaigns = data.filter(

@@ -6,7 +6,7 @@ import ActiveCards from "./ActiveCards";
 
 const Active = () => {
     const campaigns = useLoaderData();
-    console.log("Campaign Data:", campaigns);
+    // console.log("Campaign Data:", campaigns);
 
     const { loading } = useContext(AuthContext);
     if(loading){
@@ -24,11 +24,11 @@ const Active = () => {
 
         return campaignDeadline >= currentDate;
     });
-    console.log("Valid Campaigns:", validCampaigns);
+    // console.log("Valid Campaigns:", validCampaigns);
 
     //Limit to 6 
     const activeCampaigns = validCampaigns.slice(0,6);
-    console.log("Limited Campaigns (6 max):", activeCampaigns);
+    // console.log("Limited Campaigns (6 max):", activeCampaigns);
 
     //if no campaign
     if(activeCampaigns.length === 0){

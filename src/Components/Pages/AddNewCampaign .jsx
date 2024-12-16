@@ -34,10 +34,10 @@ const AddNewCampaign = () => {
       image,
       description,
     };
-    console.log(newCampaign);
+    // console.log(newCampaign);
 
     // send data to the server
-    fetch("http://localhost:5000/campaign", {
+    fetch("https://crowd-funding-server-dusky.vercel.app/campaign", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -46,7 +46,7 @@ const AddNewCampaign = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
@@ -56,7 +56,7 @@ const AddNewCampaign = () => {
           });
           navigate("/myCampaign");
         } else {
-          console.log("Failed to add");
+          // console.log("Failed to add");
         }
       })
       .catch((error) => console.error("ERROR adding campaign:", error));

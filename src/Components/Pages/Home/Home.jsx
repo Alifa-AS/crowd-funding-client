@@ -8,7 +8,7 @@ import HowToWork from './HowToWork';
 
 const Home = () => {
     const campaigns = useLoaderData(); //load data from loader
-    console.log("campaigns data:", campaigns)
+    // console.log("campaigns data:", campaigns);
     return (
         <div>
             <Banner />

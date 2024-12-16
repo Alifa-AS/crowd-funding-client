@@ -50,7 +50,7 @@ const Details = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/donations", {
+      const response = await fetch("https://crowd-funding-server-dusky.vercel.app/donations", {
         method: "POST",
         headers: {
           "content-type": "application/json",

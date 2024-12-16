@@ -22,10 +22,10 @@ const Users = () => {
           <thead className="bg-[#4157eb] text-white">
             <tr>
               <th>Serial</th>
-              <th>Image</th>
+              {/* <th>Image</th> */}
               <th>Name</th>
               <th>Email</th>
-              <th></th>
+             
             </tr>
           </thead>
           {/* Table Body */}

@@ -25,12 +25,12 @@ const router  = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/activeCampaigns')
+                loader: () => fetch('https://crowd-funding-server-dusky.vercel.app/activeCampaigns')
             },
             {
                 path: '/home',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/activeCampaigns')
+                loader: () => fetch('https://crowd-funding-server-dusky.vercel.app/activeCampaigns')
             },
             {
                 path: '/register',
@@ -43,7 +43,7 @@ const router  = createBrowserRouter([
             {
                 path: '/allCampaign',
                 element: <AllCampaign />,
-                loader: () => fetch('http://localhost:5000/campaign')
+                loader: () => fetch('https://crowd-funding-server-dusky.vercel.app/campaign')
             },
             {
                 path: '/addNewCampaign',     
@@ -76,7 +76,7 @@ const router  = createBrowserRouter([
                             <Users />
                         </PrivateRoutes> 
                         ),
-                loader: () => fetch('http://localhost:5000/users')
+                loader: () => fetch('https://crowd-funding-server-dusky.vercel.app/users')
             },
             {
                 path: '/details/:id',
@@ -85,7 +85,7 @@ const router  = createBrowserRouter([
                             <Details />
                         </PrivateRoutes>
                 ),
-                loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+                loader:({params})=>fetch(`https://crowd-funding-server-dusky.vercel.app/details/${params.id}`)
             },
             {
                 path: '/updateCampaign/:id',
@@ -94,7 +94,7 @@ const router  = createBrowserRouter([
                             <UpdateCampaign />
                         </PrivateRoutes>
                 ),
-                loader:({params})=>fetch(`http://localhost:5000/updateCampaign/${params.id}`)
+                loader:({params})=>fetch(`https://crowd-funding-server-dusky.vercel.app/updateCampaign/${params.id}`)
             },
         ]
     },
