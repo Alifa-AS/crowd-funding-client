@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 import About from './About';
 import Faq from './Faq';
 import HowToWork from './HowToWork';
+import Team from './OurTeam/Team';
 
 const Home = () => {
     const campaigns = useLoaderData(); //load data from loader
@@ -16,6 +17,7 @@ const Home = () => {
             <About />
             <HowToWork />
             <Faq />
+            <Team />
         </div>
     );
 };
